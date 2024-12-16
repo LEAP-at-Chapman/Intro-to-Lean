@@ -1,41 +1,25 @@
 inductive NN where
-  | z : NN               -- zero
-  | s (n : NN) : NN      -- successor of n, 1 + n
+  | z : NN                         -- zero
+  | s (n : NN) : NN                -- successor of n, n + 1, NN.s n, n.s
 
 def add : NN → NN → NN
-  | NN.z, m => m
-  | NN.s n, m => NN.s (add n m)
+  | NN.z, m => m                   -- 0 + m = m
+  | NN.s n, m => NN.s (add n m)    -- (n + 1) + m = (n + m) + 1
 
 def mul : NN → NN → NN
-  | NN.z, _ => NN.z
-  | NN.s n, m => add m (mul n m)
+  | NN.z, _ => NN.z                -- 0 * m = 0
+  | NN.s n, m => add (mul n m) m   -- (n + 1) * m = (n * m) + m
 
 -- b + 0 = b
 theorem add_zero (b : NN) : add b NN.z = b := by
   sorry
 
--- 0 + b = b
-theorem zero_add (b : NN) : add NN.z b = b := by
-  sorry
-
--- a + (1 + b) = 1 + (a + b)
+-- a + (b + 1) = (a + b) + 1
 theorem add_succ (a b : NN) : add a (NN.s b) = NN.s (add a b) := by
-  sorry
-
--- (1 + a) + b = 1 + (a + b)
-theorem succ_add (a b : NN) : add a.s b = NN.s (add a b) := by
   sorry
 
 -- a + b = b + a
 theorem add_comm (a b : NN) : add a b = add b a := by
-  sorry
-
--- (a+1) * b = b + (a*b)
-theorem succ_mul (a b : NN) : mul (NN.s a) b = add b (mul a b) := by
-  sorry
-
--- 0 * a = 0
-theorem zero_mul (a : NN) : mul NN.z a = NN.z := by
   sorry
 
 -- (a + b) + c = a + (b + c)
@@ -43,7 +27,7 @@ theorem add_assoc (a b c : NN) : add (add a b) c = add a (add b c) := by
   sorry
 
 -- a * (b + 1) = a * b + a
-theorem mul_succ (a b : NN) : mul a (NN.s b) = add (mul a b) a := by
+theorem mul_succ (a b : NN) : mul a b.s = add (mul a b) a := by
   sorry
 
 -- a * 0 = 0

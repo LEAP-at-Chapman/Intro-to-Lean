@@ -6,9 +6,11 @@ Teaching materials for the Introduction to Lean course.
 
 WARNING: Most of the materials have been only lightly tested and may need adjustments. Do not hesitate to get in touch with feedback.
 
-- Lean Natural Numbers Game 
-- Lean Logic Game
-- Lean from Scratch (without mathlib)
+- Lean in the Browser
+  - Natural Numbers Game 
+  - Logic Game
+- Lean in the Editor (without mathlib)
   - [`naturalNumbersSorry.lean`](Lean-from-scratch/naturalNumbersSorry.lean)
+  - [`insertionSortSorry.lean`](Lean-from-scratch/insertionSortSorry.lean)
 - Lean Projects (with mathlib)
 
